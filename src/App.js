@@ -1,25 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { MemeGenProvider } from "./context/MemeGenContext";
+import Form from "./components/Form";
+import MemeGenerated from "./components/MemeGenerated";
 
-function App() {
+
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MemeGenProvider>
+      <div className="containerBody">
+        <h1>Ways Meme Generator</h1>
+        <Form />
+        <MemeGenerated />
+      </div>
+    </MemeGenProvider>
   );
 }
 
-export default App;
+
