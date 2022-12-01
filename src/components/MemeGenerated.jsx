@@ -27,7 +27,7 @@ export default function MemeGenerated() {
         <input type="radio"  name="color" className="black" value="black" onClick={chooseColor}/>
       </div>
       <section>
-          <img src={memeUrl} className="memeImg" />
+          <img src={memeUrl} className="memeImg" alt="meme"/>
           <p className="topText" style={{color: textColor}}>{topText}</p>
           <p className="bottomText" style={{color: textColor}}>{bottomText}</p>
       </section>
