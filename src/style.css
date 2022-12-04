@@ -1,4 +1,4 @@
-*{
+/* *{
     margin: 0;
     padding: 0;
     font-family: inherit;
@@ -16,9 +16,6 @@ body{
     align-content: center;
 }
 
-#root{
-    width: min(600px, 95%);
-}
 
 .containerBody{
     background-color: #ba6ce7;
@@ -146,4 +143,23 @@ section p{
 
 .bottomText{
     bottom: 0;
+} */
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    height: 100vh;
+    background-color: #100018;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+
+#root{
+    width: min(600px, 95%);
+    background-color: #ba6ce7;
 }

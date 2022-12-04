@@ -18,18 +18,18 @@ export default function MemeGenerated() {
     
   return (
     <>
-      <div className="chooseColor">
+      <div className="flex gap-2 justify-center">
         <p>Text Color:</p>
-        <input type="radio"  name="color" className="white" value="white" onClick={chooseColor}/>
-        <input type="radio"  name="color" className="red" value="red" onClick={chooseColor}/>
-        <input type="radio"  name="color" className="green" value="green" onClick={chooseColor}/>
-        <input type="radio"  name="color" className="blue" value="blue" onClick={chooseColor}/>
-        <input type="radio"  name="color" className="black" value="black" onClick={chooseColor}/>
+        <input type="radio"  name="color" className="appearance-none w-5 h-5 bg-white rounded-full cursor-pointer checked:scale-125" value="white" onClick={chooseColor}/>
+        <input type="radio"  name="color" className="appearance-none w-5 h-5 bg-red-600 rounded-full cursor-pointer checked:scale-125" value="red" onClick={chooseColor}/>
+        <input type="radio"  name="color" className="appearance-none w-5 h-5 bg-green-600 rounded-full cursor-pointer checked:scale-125" value="green" onClick={chooseColor}/>
+        <input type="radio"  name="color" className="appearance-none w-5 h-5 bg-blue-600 rounded-full cursor-pointer checked:scale-125" value="blue" onClick={chooseColor}/>
+        <input type="radio"  name="color" className="appearance-none w-5 h-5 bg-black rounded-full cursor-pointer checked:scale-125" value="black" onClick={chooseColor}/>
       </div>
-      <section>
-          <img src={memeUrl} className="memeImg" alt="meme"/>
-          <p className="topText" style={{color: textColor}}>{topText}</p>
-          <p className="bottomText" style={{color: textColor}}>{bottomText}</p>
+      <section className="flex justify-center px-2 relative h-96">
+          <img src={memeUrl} className="w-full" alt="meme"/>
+          <p className="absolute top-0 text-3xl font-bold" style={{color: textColor}}>{topText}</p>
+          <p className="absolute bottom-0 text-3xl font-bold" style={{color: textColor}}>{bottomText}</p>
       </section>
     </>
   )

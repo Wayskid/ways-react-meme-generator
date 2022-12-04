@@ -21,34 +21,36 @@ export default function Form() {
     }
 
   return (
-    <form>
-        <div>
+    <form className="grid gap-3 px-5">
+        <div className="flex items-center border-black border-2 gap-2 px-2 rounded-lg">
             <input
-                placeholder="Top Text"
                 type="text"
                 onChange={handleTopTextInput}
                 value={topText}
+                className="bg-transparent w-full text-xl py-1 focus:outline-none text-Fuchsia
+                -900"
             />
             {topText && <FontAwesomeIcon 
-                icon={faXmark} className="clearBtn" 
+                icon={faXmark} className="text-xl cursor-pointer" 
                 onClick={()=>{clearInput(setTopText)}}
             />}
         </div>
-        <div>
+        <div className="flex items-center border-black border-2 gap-2 px-2 rounded-lg">
             <input
-                placeholder="Bottom Text"
                 type="text"
                 onChange={handleBottomTextInput}
                 value={bottomText}
+                className="bg-transparent w-full text-xl py-1 focus:outline-none text-Fuchsia
+                -900"
             />
             {bottomText && <FontAwesomeIcon 
-                icon={faXmark} className="clearBtn" 
+                icon={faXmark} className="text-xl cursor-pointer" 
                 onClick={()=>{clearInput(setBottomText)}}
             />}
         </div>
         <button 
             type="button" 
-            className="generateBtn" 
+            className="bg-[#340251] text-white py-2 rounded-lg text-xl hover:bg-purple-900 transition" 
             onClick={handleGenerateMeme}
         >Generate New Meme</button>
     </form>
