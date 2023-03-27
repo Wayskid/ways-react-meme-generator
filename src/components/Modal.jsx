@@ -3,7 +3,10 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 export default function Modal({ closeModal }) {
   return (
-    <div className="modal absolute top-0 left-0 w-full h-full grid content-center bg-[#100018]/40 transition-all">
+    <div
+      className="modal absolute top-0 left-0 w-full h-full grid content-center bg-[#100018]/40 transition-all"
+      onClick={closeModal}
+    >
       <div className="instruction grid gap-4 bg-[#e7d0f0] w-82 mb-20 md:mb-0 md:w-96 justify-self-center relative p-5 text-slate-900 font-normal">
         <p className="text-xl  font-medium">Instructions</p>
         <button className="text-lg absolute top-2 right-3">
