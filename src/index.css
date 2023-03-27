@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    height: 100vh;
+    background-color: #100018;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+
+#root{
+    width: min(1000px, 95%);
+    display: grid;
+    align-items: center;
+    height: 80%;
+}

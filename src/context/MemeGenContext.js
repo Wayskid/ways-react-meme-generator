@@ -1,52 +1,84 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState, useEffect, useRef } from "react";
 
-const MemeGenContext = createContext()
+const MemeGenContext = createContext();
 
-export function MemeGenProvider({ children }){
+export function MemeGenProvider({ children }) {
+  //Meme API
+  const [memesData, setMemesData] = useState([]);
+  const [memeUrl, setMemeUrl] = useState("https://i.imgflip.com/3si4.jpg");
 
-    const [ memesData, setMemesData ] = useState([])
-    const [ topText, setTopText ] = useState("Top Text Here")
-    const [ bottomText, setBottomText ] = useState("Bottom Text Here")
-    const [ memeUrl, setMemeUrl ] = useState("https://i.imgflip.com/3si4.jpg")
+  useEffect(() => {
+    fetch("https://api.imgflip.com/get_memes")
+      .then((response) => response.json())
+      .then((data) => setMemesData(data));
+  }, []);
 
-    useEffect(()=>{
-        fetch('https://api.imgflip.com/get_memes')
-        .then(response => response.json())
-        .then(data => setMemesData(data))
-    }, [])
+  //Texts on Meme
+  const [text, setText] = useState({
+    topText: "Top Text",
+    bottomText: "Bottom Text",
+  });
 
-    function handleTopTextInput(e) {
-        setTopText(e.target.value);
+  function handleTextInput(e) {
+    setText((prev) => {
+      return {
+        ...prev,
+        [e.target.name]: e.target.value,
+      };
+    });
+  }
+
+  //Generate Meme Button
+  function handleGenerateMeme() {
+    const randNum = Math.floor(Math.random() * 100);
+    setMemeUrl(memesData.data.memes[randNum].url);
+  }
+
+  //Choose Text Color
+  const [textColor, setTextColor] = useState("black");
+
+  function chooseColor(e) {
+    setTextColor(e.target.value);
+  }
+
+  //Choose Text Size
+  const [textSize, setTextSize] = useState(25);
+
+  function addSize() {
+    if (textSize < 40) {
+      setTextSize(textSize + 1);
     }
+  }
 
-    function handleBottomTextInput(e) {
-        setBottomText(e.target.value);
+  function subSize() {
+    if (textSize > 14) {
+      setTextSize(textSize - 1);
     }
+  }
 
-    
-    function handleGenerateMeme(){
-    const randNum = Math.floor(Math.random() * 100)
-    setMemeUrl(memesData.data.memes[randNum].url)
-    }
+  //Download meme
+  const memeImg = useRef();
 
-
-
-    return <MemeGenContext.Provider 
-            value={{
-                memesData,
-                topText,
-                bottomText,
-                memeUrl,
-                handleTopTextInput,
-                handleBottomTextInput,
-                handleGenerateMeme,
-                setTopText,
-                setBottomText,
-            }}
-        >
-            {children}
-        </MemeGenContext.Provider>
+  return (
+    <MemeGenContext.Provider
+      value={{
+        memesData,
+        text,
+        setText,
+        handleTextInput,
+        memeUrl,
+        handleGenerateMeme,
+        chooseColor,
+        textColor,
+        memeImg,
+        textSize,
+        addSize,
+        subSize,
+      }}
+    >
+      {children}
+    </MemeGenContext.Provider>
+  );
 }
 
 export default MemeGenContext;
-
