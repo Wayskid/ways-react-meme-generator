@@ -9,9 +9,6 @@ export function MemeGenProvider({ children }) {
   const [memeUrl, setMemeUrl] = useState("https://i.imgflip.com/3si4.jpg");
 
   useEffect(() => {
-    // fetch("https://api.imgflip.com/get_memes")
-    //   .then((response) => response.json())
-    //   .then((data) => setMemesData(data));
 
     async function getMemes() {
       try {
